@@ -21,16 +21,6 @@
     </nav>
     <div>
       <button
-        v-if="!$store.getters['auth/getAuth']"
-        @click="
-          $store.dispatch('auth/login', {
-            login: true,
-          })
-        "
-      >
-        Login
-      </button>
-      <button
         v-if="$store.getters['auth/getAuth']"
         @click="
           $store.dispatch('auth/login', {
@@ -39,6 +29,16 @@
         "
       >
         Logout
+      </button>
+      <button
+        v-else
+        @click="
+          $store.dispatch('auth/login', {
+            login: true,
+          })
+        "
+      >
+        Login
       </button>
     </div>
   </header>
